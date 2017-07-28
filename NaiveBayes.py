@@ -1,10 +1,6 @@
 from __future__ import division
 import numpy as np
-import scipy as sc
-#from prettyprint import pp
-#from pprint import pp
 import os
-import re
 from datetime import datetime as dt
 from util import *
 
@@ -50,15 +46,11 @@ class NaiveBayes:
         term dictionary provided
 
         Parameters
-        ----------
         class_counts: list (number of documents in each class)
         tfidf_but_smoothing: boolean
                              if True, tfidf weighting will be used (ntn.ntn)
                              if False, smoothing will be used
-
-        Returns
-        -------
-
+        Returns void
         """
         # First learn the prior probabilities
 
@@ -79,23 +71,21 @@ class NaiveBayes:
         if not tfidf_but_smoothing:
             for i in range(len(self.tdict)):
                 for j in range(self.k):
-                    self.cctermp[i,j] = (self.cctermp[i,j] + 1) * 1.0 / (self.ctermcnt[j] + len(self.tdict))
+                    self.cctermp[i, j] = (self.cctermp[i, j] + 1) * 1.0 / (self.ctermcnt[j] + len(self.tdict))
         else:
             for i in range(len(self.tdict)):
                 for j in range(self.k):
-                    if self.cctermp[i,j] > 0:
-                        self.cctermp[i,j] = (self.cctermp[i,j] + 1) * np.log(self.ctermcnt[j] * 1.0 / self.cctermp[i,j])
+                    if self.cctermp[i, j] > 0:
+                        self.cctermp[i, j] = (self.cctermp[i, j] + 1) * np.log(self.ctermcnt[j] * 1.0 / self.cctermp[i,j])
 
     def predict(self, doc):
         """
         this method will predict the label for the input document using the Naive Bayes classification method
 
         Parameters
-        doc: list
-             input document for which its label is going to be predicted, this argument should be provided as a list of tokens
+        doc: list (input document for which its label is going to be predicted, this argument should be provided as a list of tokens)
         Returns
-        output: object
-                an element of the class_labels list
+        output: object (an element of the class_labels list)
         """
 
         doc_vec = self.__createVectorRepresentation(doc)
@@ -107,17 +97,14 @@ class NaiveBayes:
 
         return self.class_labels[class_score.index(max(class_score))]
 
-
     def predictPool(self, doc_collection):
         """
         this method will get a dictionary of collection of documents and predict their label.
 
         Parameters
-        doc_collection: dictionary
-                        dictionary of collection of documents for which we want to predict their label
+        doc_collection: dictionary (dictionary of collection of documents for which we want to predict their label)
         Returns
-        lbl_pool: dictionary
-                  dictionary of collection of labels for each corresponding document will be returned
+        lbl_pool: dictionary (dictionary of collection of labels for each corresponding document will be returned)
         """
         lbl_pool = {}
         for cl in self.class_labels:
@@ -216,7 +203,7 @@ def main():
     tdict = createDictionary(class_titles, pool)    # keep a record how many times a word has occurred as class wise
     print('Number of words in the dictionary = {0}'.format(len(tdict)))
 
-    dumbBayes = NaiveBayes(class_titles, tdict)
+    dumbBayes = NaiveBayes(class_titles, tdict)     # create a dumb NaiveBayes network
     class_count = [len(train[cl]) for cl in class_titles]
 
     start = dt.now()
@@ -257,7 +244,7 @@ def main():
         print 'accuracy = ', Acc
         print ' '
 
-    print 'macro-averaged F measure', (total_F / len(class_titles))
+    print 'macro-averaged F measure', total_F / len(class_titles)
 
     saveDictToFile(tdict, 'dictionary.csv', class_titles)
 
