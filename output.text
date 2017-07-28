@@ -1,0 +1,153 @@
+C:\Python27\python.exe C:/Users/DimRu/PycharmProjects/TextClassifier/NaiveBayes.py
+Number of files in alt.atheism are 1000
+750 files to training & 250 files to testing in alt.atheism
+Number of files in comp.graphics are 1000
+750 files to training & 250 files to testing in comp.graphics
+Number of files in comp.os.ms-windows.misc are 1000
+750 files to training & 250 files to testing in comp.os.ms-windows.misc
+Number of files in comp.sys.ibm.pc.hardware are 1000
+750 files to training & 250 files to testing in comp.sys.ibm.pc.hardware
+Number of files in comp.sys.mac.hardware are 1000
+750 files to training & 250 files to testing in comp.sys.mac.hardware
+Number of files in comp.windows.x are 1000
+750 files to training & 250 files to testing in comp.windows.x
+Number of files in misc.forsale are 1000
+750 files to training & 250 files to testing in misc.forsale
+Number of files in rec.autos are 1000
+750 files to training & 250 files to testing in rec.autos
+Number of files in rec.motorcycles are 1000
+750 files to training & 250 files to testing in rec.motorcycles
+Number of files in rec.sport.baseball are 1000
+750 files to training & 250 files to testing in rec.sport.baseball
+Number of files in rec.sport.hockey are 1000
+750 files to training & 250 files to testing in rec.sport.hockey
+Number of files in sci.crypt are 1000
+750 files to training & 250 files to testing in sci.crypt
+Number of files in sci.electronics are 1000
+750 files to training & 250 files to testing in sci.electronics
+Number of files in sci.med are 1000
+750 files to training & 250 files to testing in sci.med
+Number of files in sci.space are 1000
+750 files to training & 250 files to testing in sci.space
+Number of files in soc.religion.christian are 997
+747 files to training & 250 files to testing in soc.religion.christian
+Number of files in talk.politics.guns are 1000
+750 files to training & 250 files to testing in talk.politics.guns
+Number of files in talk.politics.mideast are 1000
+750 files to training & 250 files to testing in talk.politics.mideast
+Number of files in talk.politics.misc are 1000
+750 files to training & 250 files to testing in talk.politics.misc
+Number of files in talk.religion.misc are 1000
+750 files to training & 250 files to testing in talk.religion.misc
+for the training
+Number of words in the dictionary = 100821
+elapsed time for training the Naive Bayes
+0:00:42.197000
+elapsed time for testing Naive Bayes
+0:00:00.216000
+elapsed time for testing a pool of documents
+0:15:43.345000
+{'rec.motorcycles': {'tn': 4742, 'fp': 17, 'fn': 8, 'tp': 233}, 'comp.sys.mac.hardware': {'tn': 4704, 'fp': 16, 'fn': 46, 'tp': 234}, 'talk.politics.misc': {'tn': 4699, 'fp': 61, 'fn': 51, 'tp': 189}, 'soc.religion.christian': {'tn': 4731, 'fp': 0, 'fn': 19, 'tp': 250}, 'comp.graphics': {'tn': 4687, 'fp': 58, 'fn': 63, 'tp': 192}, 'sci.med': {'tn': 4738, 'fp': 32, 'fn': 12, 'tp': 218}, 'talk.religion.misc': {'tn': 4654, 'fp': 81, 'fn': 96, 'tp': 169}, 'comp.windows.x': {'tn': 4706, 'fp': 49, 'fn': 44, 'tp': 201}, 'comp.sys.ibm.pc.hardware': {'tn': 4644, 'fp': 41, 'fn': 106, 'tp': 209}, 'talk.politics.guns': {'tn': 4710, 'fp': 24, 'fn': 40, 'tp': 226}, 'alt.atheism': {'tn': 4701, 'fp': 69, 'fn': 49, 'tp': 181}, 'comp.os.ms-windows.misc': {'tn': 4738, 'fp': 93, 'fn': 12, 'tp': 157}, 'sci.crypt': {'tn': 4726, 'fp': 15, 'fn': 24, 'tp': 235}, 'sci.space': {'tn': 4736, 'fp': 20, 'fn': 14, 'tp': 230}, 'misc.forsale': {'tn': 4714, 'fp': 39, 'fn': 36, 'tp': 211}, 'rec.sport.hockey': {'tn': 4743, 'fp': 12, 'fn': 7, 'tp': 238}, 'rec.sport.baseball': {'tn': 4743, 'fp': 15, 'fn': 7, 'tp': 235}, 'sci.electronics': {'tn': 4714, 'fp': 44, 'fn': 36, 'tp': 206}, 'rec.autos': {'tn': 4727, 'fp': 15, 'fn': 23, 'tp': 235}, 'talk.politics.mideast': {'tn': 4729, 'fp': 13, 'fn': 21, 'tp': 237}}
+Probability for  alt.atheism
+precision =  0.724
+recall =  0.786956521739
+accuracy =  0.9764
+
+Probability for  comp.graphics
+precision =  0.768
+recall =  0.752941176471
+accuracy =  0.9758
+
+Probability for  comp.os.ms-windows.misc
+precision =  0.628
+recall =  0.92899408284
+accuracy =  0.979
+
+Probability for  comp.sys.ibm.pc.hardware
+precision =  0.836
+recall =  0.663492063492
+accuracy =  0.9706
+
+Probability for  comp.sys.mac.hardware
+precision =  0.936
+recall =  0.835714285714
+accuracy =  0.9876
+
+Probability for  comp.windows.x
+precision =  0.804
+recall =  0.820408163265
+accuracy =  0.9814
+
+Probability for  misc.forsale
+precision =  0.844
+recall =  0.854251012146
+accuracy =  0.985
+
+Probability for  rec.autos
+precision =  0.94
+recall =  0.910852713178
+accuracy =  0.9924
+
+Probability for  rec.motorcycles
+precision =  0.932
+recall =  0.966804979253
+accuracy =  0.995
+
+Probability for  rec.sport.baseball
+precision =  0.94
+recall =  0.971074380165
+accuracy =  0.9956
+
+Probability for  rec.sport.hockey
+precision =  0.952
+recall =  0.971428571429
+accuracy =  0.9962
+
+Probability for  sci.crypt
+precision =  0.94
+recall =  0.907335907336
+accuracy =  0.9922
+
+Probability for  sci.electronics
+precision =  0.824
+recall =  0.851239669421
+accuracy =  0.984
+
+Probability for  sci.med
+precision =  0.872
+recall =  0.947826086957
+accuracy =  0.9912
+
+Probability for  sci.space
+precision =  0.92
+recall =  0.94262295082
+accuracy =  0.9932
+
+Probability for  soc.religion.christian
+precision =  1.0
+recall =  0.92936802974
+accuracy =  0.9962
+
+Probability for  talk.politics.guns
+precision =  0.904
+recall =  0.84962406015
+accuracy =  0.9872
+
+Probability for  talk.politics.mideast
+precision =  0.948
+recall =  0.918604651163
+accuracy =  0.9932
+
+Probability for  talk.politics.misc
+precision =  0.756
+recall =  0.7875
+accuracy =  0.9776
+
+Probability for  talk.religion.misc
+precision =  0.676
+recall =  0.637735849057
+accuracy =  0.9646
+
+macro-averaged F measure 0.856982999462
+
+Process finished with exit code 0
