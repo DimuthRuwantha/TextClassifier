@@ -1,6 +1,6 @@
 import numpy as np
 import scipy as sc
-#from prettyprint import pp
+from prettyprint import pp
 import os
 import re
 
@@ -12,7 +12,7 @@ dfreq_lbl = "docfreq"
 pattern = re.compile(r'([a-zA-Z]+|[0-9]+(\.[0-9]+)?)')
 
 
-def tokenizeDoc(doc_address, min_len = 0, remove_numerics=True):
+def tokenizeDoc(doc_address, min_len=0, remove_numerics=True):
     """
     to tokenize a document file to alphabetic tokens use this function.
 
@@ -36,8 +36,8 @@ def tokenizeDoc(doc_address, min_len = 0, remove_numerics=True):
         f = open(doc_address)
         raw = f.read().lower()
         text = pattern.sub(r' \1 ', raw.replace('\n', ' '))
-        text_translated = ''
-        if remove_numerics:
+        # text_translated = ''
+        if remove_numerics:     # if numerics are available it should be removed
             text_translated = text.translate(None, punctuation + digits)
         else:
             text_translated = text.translate(None, punctuation)
@@ -47,7 +47,6 @@ def tokenizeDoc(doc_address, min_len = 0, remove_numerics=True):
         print("Error: %s couldn't be opened!", doc_address)
     finally:
         return tokens
-
 
 
 def createDictionary(classes, tokens_pool):
@@ -74,11 +73,11 @@ def createDictionary(classes, tokens_pool):
     """
 
     token_dict = {}
-    idx = 0 #a unique index for words in dictionary
+    idx = 0         # a unique index for words in dictionary
     for cl in classes:
         for tokens_list in tokens_pool[cl]:
             for token in tokens_list:
-                if token in token_dict:             #if token has been added to the dictionary before
+                if token in token_dict:             # if token has been added to the dictionary before
                     if cl in token_dict[token]:
                         token_dict[token][cl] += 1
                     else:
@@ -91,9 +90,11 @@ def createDictionary(classes, tokens_pool):
     return token_dict
 
 
-
 def createTokenPool(classes, paths):
     """
+    read each file and put all the words to a dictionary where the key is class
+    ex: {'comp.os.ms-windows.misc' : [['xref',..., 'cantaloupe']]}
+    
     this method will create a pool of tokens out of the list of paths to documents it will be provided
 
     Parameters
@@ -114,12 +115,11 @@ def createTokenPool(classes, paths):
         token_pool[cl] = []
         for path in paths[cl]:
             token_pool[cl].append(tokenizeDoc(path))
-
+        # print('Number of words in {0} = {1}'.format(cl, len(token_pool[cl])))
     return token_pool
 
 
-
-def saveDictToFile(tdict, filename):
+def saveDictToFile(tdict, filename, class_titles):
     """
     this method will save the key/value pair of the dictionary to a csv file
 
@@ -144,7 +144,6 @@ def saveDictToFile(tdict, filename):
             if cl in val:
                 row.append(cl + ':' + str(val[cl]))
         w.writerow(row)
-
 
 
 def readFileToDict(filename):
@@ -175,7 +174,6 @@ def readFileToDict(filename):
     return tdict
 
 
-
 def train_test_split(ratio, classes, files):
     """
     this method will split the input list of files to train and test sets.
@@ -200,7 +198,9 @@ def train_test_split(ratio, classes, files):
     train_dict = {}
     test_dict = {}
     for cl in classes:
-        train_cnt = int(ratio * len(files[cl]))
-        train_dict[cl] = files[cl][:train_cnt]
-        test_dict[cl] = files[cl][train_cnt:]
+        train_cnt = int(ratio * len(files[cl]))     # set the number according to the ratio to split data set
+        train_dict[cl] = files[cl][:train_cnt]      # get files up-to the training count as train data
+        test_dict[cl] = files[cl][train_cnt:]       # grt files higher than the training count as test data
+        print('Number of files in {0} are {1}'.format(cl, len(files[cl])))
+        print('{0} files to training & {1} files to testing in {2}'.format(len(train_dict[cl]), len(test_dict[cl]), cl))
     return train_dict, test_dict
